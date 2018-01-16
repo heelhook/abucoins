@@ -59,6 +59,23 @@ module Abucoins
       get('/accounts')
     end
 
+    def deposits_crypto(currency:, method:)
+      post('/deposits/crypto', {
+        currency: currency,
+        method: method
+      })
+    end
+
+    def withdrawals_crypto(amount:, currency:, method:, address:, tag: nil)
+      post('/withdrawals/crypto', {
+        amount: amount,
+        currency: currency,
+        method: method,
+        address: address,
+        tag: tag,
+      })
+    end
+
     private
 
     def signature(timestamp, verb, path, body)
