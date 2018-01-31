@@ -28,8 +28,8 @@ module Abucoins
       get("/orders/#{id}")
     end
 
-    def fills
-      get('/fills')
+    def fills(args = nil)
+      get('/fills', params: args)
     end
 
     def create_order(side:, hidden: false, time_in_force: nil, size:, price:, product_id:, type: 'limit', cancel_after: nil, post_only: nil)
@@ -74,6 +74,14 @@ module Abucoins
         address: address,
         tag: tag,
       })
+    end
+
+    def deposits(opts={})
+      get('/deposits/history', opts)
+    end
+
+    def withdrawals(opts={})
+      get('/withdrawals/history', opts)
     end
 
     private
